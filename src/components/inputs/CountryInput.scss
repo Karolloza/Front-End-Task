@@ -1,0 +1,45 @@
+.title {
+  color:red;
+  display: flex;
+  justify-content: center;
+}
+
+.search {
+  display:flex;
+  justify-content: center;
+
+  .searchBtn {
+    margin-left:10px;
+  }
+}
+
+ul {
+  padding: 0 40px;
+  list-style-type: none;
+  li {
+    padding: 10px;
+    font-size: 25px;
+    &:nth-of-type(2n) {
+    background-color: #CDCDCD;
+
+    }
+    &:nth-of-type(2n+1) {
+      background-color: #BABABA;
+    }
+
+    .descriptionBtn {
+      float:right;
+      cursor:pointer;
+    }
+
+    .descriptionText {
+      display: none;
+    }
+
+    .descriptionVisible {
+      display: block;
+      font-size:18px;
+      color:green;
+    }
+  }
+}
