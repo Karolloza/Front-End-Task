@@ -5,7 +5,7 @@ import CountryInput from './components/inputs/CountryInput'
 function App() {
   return (
     <div className="App">
-        <div className='container'>
+        <div className='container' >
             <CountryInput />
         </div>
     </div>

@@ -59,6 +59,12 @@ class CountryInput extends React.Component {
         this.mostPollutedCities(this.refs.countryInput.value)
     }
 
+    handleEnterPress = (e) => {
+        if (e.key === 'Enter') {
+            this.handleShowCities()
+        }
+    }
+
     componentDidMount() {
         fetch('https://api.openaq.org/v1/countries')
             .then(res => res.json())
@@ -72,13 +78,12 @@ class CountryInput extends React.Component {
             cities,
             showMore,
             descriptions,
-            selectedCountry,
-            isLoading
+            selectedCountry
         } = this.state
 
         return (
-            <div>
-                <div>
+            <div tabIndex={0} onKeyDown={(e) => this.handleEnterPress(e)}>
+                <div >
                     <div className='title'>
                         <h1>Select country and submit</h1>
                     </div>
@@ -94,10 +99,12 @@ class CountryInput extends React.Component {
                                 })
                             }
                         </select>
-                        <button
+                        <input
+                            type='button'
+                            value='Submit'
                             onClick={() => this.handleShowCities()}
                             className='searchBtn'
-                        >Submit</button>
+                        />
                     </div>
 
                 </div>
@@ -107,14 +114,14 @@ class CountryInput extends React.Component {
                             cities && cities.map((el) => {
                                 return (
                                 <li key={el.city}>
-                                    <b>{el.city}</b> have <b>{el.count}</b> citizens
+                                    <span className='cityName'><b>{el.city}</b> have <b>{el.count}</b> citizens</span>
                                     <span
                                         onClick={(e) => this.handleShowDescription(e, el)}
                                         className='descriptionBtn'>
                                         {showMore}
                                     </span>
                                     <div className='descriptionText' ref='comment'>
-                                        { descriptions[el.city] || <Loader />}
+                                        { descriptions[el.city] || <Loader /> }
                                     </div>
                                 </li>
                                 )})

@@ -1,3 +1,16 @@
+select {
+  font-size: 15px;
+  border-radius:4px;
+  box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+  background: #f8f8f8;
+  color:#888;
+  border:none;
+  outline:none;
+  display: inline-block;
+  cursor:pointer;
+  max-width:150px;
+}
+
 .title {
   color:red;
   display: flex;
@@ -9,7 +22,22 @@
   justify-content: center;
 
   .searchBtn {
-    margin-left:10px;
+    background: #3498db;
+    background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+    background-image: linear-gradient(to bottom, #3498db, #2980b9);
+    border-radius: 28px;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    margin-left:10px
+  }
+
+  .searchBtn:hover {
+    background: #3cb0fd;
+    background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+    background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+    text-decoration: none;
   }
 }
 
@@ -19,6 +47,8 @@ ul {
   li {
     padding: 10px;
     font-size: 25px;
+    display: block;
+
     &:nth-of-type(2n) {
     background-color: #CDCDCD;
 
@@ -27,9 +57,14 @@ ul {
       background-color: #BABABA;
     }
 
+    .cityName {
+      display: inline-block;
+    }
+
     .descriptionBtn {
-      float:right;
+      display: inline-block;
       cursor:pointer;
+      float: right;
     }
 
     .descriptionText {
@@ -41,5 +76,60 @@ ul {
       font-size:18px;
       color:green;
     }
+  }
+}
+
+
+@media (max-width: 960px){
+  ul {
+    padding: 0px;
+
+    li {
+      padding: 20px 10px;
+      font-size: 21px;
+
+      .descriptionVisible {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+@media (max-width: 820px){
+  .title {
+    font-size:15px;
+  }
+  ul {
+    li {
+      padding: 30px 10px;
+
+      .cityName {
+        max-width: 300px;
+      }
+      .descriptionBtn {
+        font-size: 25px;
+      }
+    }
+  }
+}
+
+@media (max-width: 580px){
+  ul {
+    li {
+      padding: 40px 10px;
+      font-size: 13px;
+      .cityName {
+        width: 180px;
+      }
+      .descriptionBtn {
+        font-size: 15px;
+      }
+    }
+  }
+}
+
+@media (max-width: 460px){
+  .title {
+    font-size:11px;
   }
 }
