@@ -1,4 +1,5 @@
 import React from 'react'
+import Loader from '../loader/Loader'
 import './CountryInput.scss'
 
 const availableCountries = ['Poland', 'Germany', 'Spain', 'France']
@@ -43,8 +44,9 @@ class CountryInput extends React.Component {
                 this.setState(prevState => ({
                     descriptions: {
                         ...prevState.descriptions,
-                        [data.query.pages[pageId].title]: data.query.pages[pageId].description
-                    }}))
+                        [data.query.pages[pageId].title]: data.query.pages[pageId].description || 'no description'
+                    }
+                }))
             })
     }
 
@@ -66,7 +68,13 @@ class CountryInput extends React.Component {
     }
 
     render() {
-        const { cities, showMore, descriptions, selectedCountry } = this.state
+        const {
+            cities,
+            showMore,
+            descriptions,
+            selectedCountry,
+            isLoading
+        } = this.state
 
         return (
             <div>
@@ -105,7 +113,9 @@ class CountryInput extends React.Component {
                                         className='descriptionBtn'>
                                         {showMore}
                                     </span>
-                                    <div className='descriptionText' ref='comment'>{descriptions[el.city] || 'no description'}</div>
+                                    <div className='descriptionText' ref='comment'>
+                                        { descriptions[el.city] || <Loader />}
+                                    </div>
                                 </li>
                                 )})
                         }
